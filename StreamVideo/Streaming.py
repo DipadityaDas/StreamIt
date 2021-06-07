@@ -150,6 +150,27 @@ class StreamingClient:
 		else:
 			print("Client not streaming!")
 
+
+class CameraClient(StreamingClient):
+    def __init__(self, host, port, x_res=1024, y_res=576):
+        self.__x_res = x_res
+        self.__y_res = y_res
+        self.__camera = cv2.VideoCapture(0)
+        super(CameraClient, self).__init__(host, port)
+
+    def _configure(self):
+        self.__camera.set(3, self.__x_res)
+        self.__camera.set(4, self.__y_res)
+        super(CameraClient, self)._configure()
+
+    def _get_frame(self):
+        ret, frame = self.__camera.read()
+        return frame
+
+    def _cleanup(self):
+        self.__camera.release()
+        cv2.destroyAllWindows()
+
 class VideoClient(StreamingClient):
 	def __init__(self, host, port, video, loop=True):
 		self.__video = cv2.VideoCapture(video)
