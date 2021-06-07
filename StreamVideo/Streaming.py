@@ -7,7 +7,7 @@ import imutils
 import threading
 
 class StreamingServer:
-	def __init__(self, host, port, slots, quit_key='q'):
+	def __init__(self, host, port, slots=4, quit_key='q'):
 		self.__host = host
 		self.__port = port
 		self.__used_slots = 0
