@@ -38,7 +38,7 @@ def receive(session, addr):
 def send(session, addr):
 	connection = session.makefile('wb')
 	# cam = cv2.VideoCapture('http://192.168.1.4:8080/video')
-	cam = cv2.VideoCapture(0)
+	cam = cv2.VideoCapture(1)
 	encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
 
 	while True:
